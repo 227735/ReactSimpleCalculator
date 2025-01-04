@@ -28,6 +28,10 @@ function App() {
     const handleKeyPress = (event) => {
       const key = event.key;
 
+      if (key === "+" || key === "=") {
+        event.preventDefault();
+      }
+
       if ("0123456789".includes(key)) {
         handleClick(key);
       } else if (["/", "*", "-", "+", "."].includes(key)) {
@@ -43,7 +47,6 @@ function App() {
 
     document.addEventListener("keydown", handleKeyPress);
 
-    // Usunięcie nasłuchiwacza po odmontowaniu komponentu
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
     };
